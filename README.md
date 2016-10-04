@@ -1,36 +1,18 @@
-# tiko-example
+# Tiko-example
 
-FIXME: description
+Simple full-stack Clojure example project
 
-## Installation
+## Development
 
-Download from http://example.com/FIXME.
+TODO
 
-## Usage
+## Deployment
 
-FIXME: explanation
-
-    $ java -jar tiko-example-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+TODO
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 Matti Nieminen
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
