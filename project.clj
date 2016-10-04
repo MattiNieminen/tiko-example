@@ -1,6 +1,6 @@
 (defproject tiko-example "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Simple full-stack Clojure example project"
+  :url "https://github.com/MattiNieminen/tiko-example"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]]
