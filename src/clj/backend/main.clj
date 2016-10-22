@@ -1,4 +1,4 @@
-(ns tiko-example.core
+(ns backend.main
   (:gen-class))
 
 (defn -main

@@ -1,6 +1,6 @@
-(ns tiko-example.core-test
+(ns backend.main-test
   (:require [clojure.test :refer :all]
-            [tiko-example.core :refer :all]))
+            [backend.main :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
