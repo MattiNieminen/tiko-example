@@ -1,7 +1,10 @@
 (ns backend.main
-  (:gen-class))
+  (:gen-class)
+  (:require [mount.core :as mount]
+            [backend.mount.aleph]))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (mount/start)
+  @(promise))
