@@ -1,20 +1,23 @@
 (ns backend.mount.aleph
-  (:require [mount.core :as mount]
-            [aleph.http :as aleph]))
+  (:require [backend.static :as static]
+            [mount.core :as mount]
+            [aleph.http :as aleph]
+            [ring.middleware.defaults :as ring-defaults]))
 
 (defonce port 3000)
 
-(defn handler
-  [req]
-  {:status 200
-   :headers {"content-type" "text/plain"}
-   :body "hello!"})
+(defn create-handler
+  []
+  (let [static (-> (static/create-handler)
+                   (ring-defaults/wrap-defaults ring-defaults/site-defaults))]
+    (fn [req]
+      (static req))))
 
 (mount/defstate aleph
   :start
   (do
-    (println "Starting HTTP server at port " port)
-    (aleph/start-server handler {:port port}))
+    (println "Starting HTTP server at port" port)
+    (aleph/start-server (create-handler) {:port port}))
   :stop
   (do
     (println "Stopping HTTP server")
