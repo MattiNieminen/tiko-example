@@ -3,7 +3,7 @@
   :url "https://github.com/MattiNieminen/tiko-example"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0-alpha13"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.namespace "0.3.0-alpha3"]
                  [mount "0.1.10"]
                  [aleph "0.4.2-alpha8"]]
@@ -12,4 +12,13 @@
   :test-paths ["test/clj" "test/cljs" "test/cljc"]
   :target-path "target/%s"
   :repl-options {:init-ns user}
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:dev {:resource-paths ["target/dev/resources"]
+                   :sass {:target-path "target/dev/resources/css"}}
+             :uberjar {:aot :all}}
+  :plugins [[lein-pdo "0.1.1"]
+            [deraen/lein-sass4clj "0.3.0"]]
+  :sass {:source-paths ["src/sass"]
+         :source-map true
+         :output-style :compressed}
+  :aliases {"develop" ["do" "clean"
+                       ["pdo" ["sass4clj" "auto"]]]})
