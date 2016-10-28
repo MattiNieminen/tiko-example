@@ -9,7 +9,9 @@
                  [mount "0.1.10"]
                  [aleph "0.4.2-alpha8"]
                  [ring/ring-defaults "0.3.0-beta1"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [re-frame "0.8.0"]
+                 [reagent "0.6.0"]]
   :main ^:skip-aot backend.main
   :source-paths ["src/clj" "src/cljs" "src/cljc"]
   :test-paths ["test/clj" "test/cljs" "test/cljc"]
