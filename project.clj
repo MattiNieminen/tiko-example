@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.293"]
                  [org.clojure/tools.namespace "0.3.0-alpha3"]
+                 [metosin/lokit "0.1.0"]
                  [mount "0.1.10"]
                  [aleph "0.4.2-alpha8"]
                  [ring/ring-defaults "0.3.0-beta1"]
