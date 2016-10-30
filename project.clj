@@ -5,10 +5,15 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.293"]
-                 [org.clojure/tools.namespace "0.3.0-alpha3"]
+
+                 ;; TODO: change this to org.clojure/tools-namespace when bug
+                 ;; http://dev.clojure.org/jira/browse/TNS-45
+                 ;; is fixed
+                 [metosin.forks/tools.namespace "0.3.0-20160926.120815-2"]
                  [metosin/lokit "0.1.0"]
                  [mount "0.1.10"]
-                 [aleph "0.4.2-alpha8"]
+                 [org.immutant/web "2.1.5"]
+                 [com.taoensso/sente "1.11.0"]
                  [ring/ring-defaults "0.3.0-beta1"]
                  [hiccup "1.0.5"]
                  [re-frame "0.8.0"]
