@@ -58,8 +58,8 @@
 
 (re-frame/reg-event-db
  :initialise-db
- (fn [_ _]
-   db/default-value))
+ (fn [db _]
+   (merge db/default-value db)))
 
 (re-frame/reg-event-fx
  :fetch-todos
