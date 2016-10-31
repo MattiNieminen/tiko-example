@@ -1,8 +1,7 @@
 (ns frontend.sente
   (:require-macros [cljs.core.async.macros :as a])
   (:require [cljs.core.async :as a]
-            [taoensso.sente :as sente]
-            [re-frame.core :as re-frame]))
+            [taoensso.sente :as sente]))
 
 (defonce state (atom nil))
 
