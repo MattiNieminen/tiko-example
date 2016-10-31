@@ -11,6 +11,7 @@
   (mount/start)
   :ready)
 
-(defn reset []
+(defn reset
+  []
   (mount/stop)
   (tools-namespace/refresh :after 'user/go))
