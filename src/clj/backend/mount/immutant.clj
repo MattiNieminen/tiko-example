@@ -1,11 +1,10 @@
 (ns backend.mount.immutant
   (:require [backend.static :as static]
+            [backend.mount.config :as config]
             [backend.mount.sente :as sente]
             [mount.core :as mount]
             [immutant.web :as immutant]
             [ring.middleware.defaults :as ring-defaults]))
-
-(defonce port 3000)
 
 (defn sente-handler
   [req]
@@ -25,11 +24,13 @@
               (static-handler req)))
         (ring-defaults/wrap-defaults ring-defaults/site-defaults))))
 
-(mount/defstate aleph
+(mount/defstate immutant
   :start
-  (do
+  (let [port (:immutant-port config/config)]
     (println "Starting Immutant web server at port" port)
-    (immutant/run (create-handler) {:host "localhost" :port 3000 :path "/"}))
+    (immutant/run (create-handler) {:host "localhost"
+                                    :port port
+                                    :path "/"}))
   :stop
   (do
     (println "Stopping Immutant web server")
