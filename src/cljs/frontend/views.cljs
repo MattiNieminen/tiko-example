@@ -9,10 +9,11 @@
 (defn todo-list
   []
   (let [todos (re-frame/subscribe [:todos])]
-    [:div.todo-list
-     (for [[idx todo] (map-indexed vector @todos)]
-       ^{:key idx}
-       [todo-item todo])]))
+    (if-not (empty? @todos)
+      [:div.todo-list
+       (for [[idx todo] (map-indexed vector @todos)]
+         ^{:key idx}
+         [todo-item todo])])))
 
 (defn new-todo-input
   []
@@ -20,6 +21,7 @@
     [:div.new-todo
      [:input.new-todo__input
       {:placeholder (tr :new-todo)
+       :auto-focus true
        :value @new-todo
        :on-change (fn [e]
                     (let [value (-> e .-target .-value)]

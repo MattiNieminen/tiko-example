@@ -1,5 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300');
+
+body {
+    background-color: #f4f4f4;
+}
+
 .loading {
     margin-top: 20px;
     text-align: center;
     font-size: 10px;
+}
+
+.todo-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.todo-title {
+    margin: 0 0 50px 0;
+    font-size: 120px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    color: #d46d7a;
+}
+
+.new-todo__input {
+    padding: 0 0 0 8px;
+    margin: 0 0 20px 0;
+    width: 475px;
+    height: 60px;
+    font-size: 28px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0px 0px 10px #c5c5c5;
+}
+
+.todo-list {
+    width: 475px;
+    background-color: white;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0px 0px 10px #c5c5c5;
+}
+
+.todo-item {
+    padding: 15px 0 15px 12px;
+    font-size: 28px;
+    border-bottom: 1px solid #d0d0d0;
 }
