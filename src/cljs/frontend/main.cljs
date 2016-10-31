@@ -9,7 +9,7 @@
   []
   (re-frame/dispatch-sync [:initialise-db])
   (re-frame/dispatch-sync [:connect-sente])
-  (reagent/render [views/hello]
+  (reagent/render [views/main-view]
                   (.getElementById js/document "app")))
 
 (main)

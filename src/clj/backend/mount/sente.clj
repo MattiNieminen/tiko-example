@@ -29,4 +29,4 @@
   :stop
   (when-let [stop-router (:router sente)]
     (println "Stopping Sente")
-    (stop-router)))
+    (assoc sente :router (stop-router))))

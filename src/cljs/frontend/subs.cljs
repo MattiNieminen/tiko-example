@@ -2,11 +2,11 @@
   (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
- :hello
+ :todos
  (fn [db _]
-   (:hello db)))
+   (:todos db)))
 
 (re-frame/reg-sub
- :shout
+ :new-todo
  (fn [db _]
-   (:shout db)))
+   (:new-todo db)))

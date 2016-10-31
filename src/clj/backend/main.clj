@@ -4,7 +4,7 @@
             [backend.mount.immutant]
 
             ;; Don't forget to require all handler namespaces
-            [backend.hello]))
+            [backend.todo]))
 
 (defn -main
   "I don't do a whole lot ... yet."

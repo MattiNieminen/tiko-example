@@ -1,3 +1,3 @@
 (ns frontend.db)
 
-(def default-value {})
+(def default-value {:todos []})

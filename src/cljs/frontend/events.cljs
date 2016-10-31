@@ -39,8 +39,7 @@
 (re-frame/reg-event-fx
  :chsk/handshake
  (fn [_ _]
-   ;; Do nothing on handshake. Could fetch initial data etc...
-   ))
+   {:dispatch [:fetch-todos]}))
 
 (re-frame/reg-event-fx
  :chsk/recv
@@ -63,17 +62,28 @@
    db/default-value))
 
 (re-frame/reg-event-fx
- :say-hello
+ :fetch-todos
  (fn [_ [_ message]]
-   {:sente-event {:event [:friends/hello {:message message}]
-                  :dispatch-to [:handle-hello-response]}}))
+   {:sente-event {:event [:todo/fetch-all]
+                  :dispatch-to [:handle-todos-response]}}))
 
 (re-frame/reg-event-db
- :handle-hello-response
- (fn [db [_ {:keys [message]}]]
-   (assoc db :hello message)))
+ :handle-todos-response
+ (fn [db [_ {:keys [todos]}]]
+   (assoc db :todos todos)))
 
 (re-frame/reg-event-db
- :friends/shout
- (fn [db [_ {:keys [message]}]]
-   (assoc db :shout message)))
+ :update-new-todo
+ (fn [db [_ {:keys [new-todo]}]]
+   (assoc db :new-todo new-todo)))
+
+(re-frame/reg-event-fx
+ :create-todo
+ (fn [{:keys [db]} _]
+   {:sente-event {:event [:todo/create (select-keys db [:new-todo])]}
+    :db (dissoc db :new-todo)}))
+
+(re-frame/reg-event-db
+ :todo/push-all
+ (fn [db [_ {:keys [todos]}]]
+   (assoc db :todos todos)))
