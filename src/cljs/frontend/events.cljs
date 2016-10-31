@@ -47,6 +47,12 @@
  (fn [_ [_ ev-msg]]
    {:dispatch (:?data ev-msg)}))
 
+(re-frame/reg-event-fx
+ :chsk/ws-ping
+ (fn [_ _]
+   ;; Do nothing on ping.
+   ))
+
 ;;
 ;; App-specific
 ;;
