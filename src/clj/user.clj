@@ -14,5 +14,4 @@
 (defn reset
   []
   (mount/stop)
-  (tools-namespace/set-refresh-dirs "clj" "cljc")
   (tools-namespace/refresh :after 'user/go))
