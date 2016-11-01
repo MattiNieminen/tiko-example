@@ -10,12 +10,15 @@
   [{:keys [event ?reply-fn]}]
   (?reply-fn {:todos @db}))
 
+;; Exercise 6. Fix function so that it does change the db
+;; or broadcast if the created todo item was was empty.
 (defmethod sente/event-msg-handler :todo/create
   [{:keys [event]}]
-  (swap! db conj (-> event second :new-todo))
+  (let [new-todo (-> event second :new-todo)]
+    (swap! db conj new-todo)
 
-  ;; Broadcast new todo list to everyone
-  (doseq [uid (:any @(:connected-uids sente/sente))]
-    ((:send-fn sente/sente)
-     uid
-     [:todo/push-all {:todos @db}])))
+    ;; Broadcast new todo list to everyone
+    (doseq [uid (:any @(:connected-uids sente/sente))]
+      ((:send-fn sente/sente)
+       uid
+       [:todo/push-all {:todos @db}]))))
