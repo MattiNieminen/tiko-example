@@ -37,6 +37,7 @@ body {
 }
 
 .todo-list {
+    margin: 0 0 20px 0;
     width: 475px;
     background-color: white;
     border: 1px solid #d0d0d0;
@@ -47,4 +48,9 @@ body {
     padding: 15px 0 15px 12px;
     font-size: 28px;
     border-bottom: 1px solid #d0d0d0;
+}
+
+.todo-footer {
+    font-size: 16px;
+    color: #b0b0b0;
 }
