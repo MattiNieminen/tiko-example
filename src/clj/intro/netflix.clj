@@ -40,16 +40,28 @@
 
 ;; Getting a list of all series names
 
+(defn series-name
+  [s]
+  (get s :name))
+
+(map series-name series)
 
 ;; Simpler: (keywords can work as functions)
+
+(map :name series)
 
 
 ;;
 ;; Filter
 ;;
 
-;; Getting a list of series, where :genre is horror
+;; Getting a list of series, where :genre is :horror
 
+(defn horror?
+  [s]
+  (= :horror (:genre s)))
+
+(filter horror? series)
 
 ;;
 ;; Reduce
@@ -57,9 +69,11 @@
 
 ;; Get the sum of episodes for all series
 
+(reduce + (map :episode-count series))
+
 
 ;;
-;; Exercise 3. Get the amount of shows which have :horror as :genre
+;; Exercise 3. Get the amount of shows which have :action as :genre
 ;;
 
 
