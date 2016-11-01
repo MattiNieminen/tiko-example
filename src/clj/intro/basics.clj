@@ -49,6 +49,9 @@
 ;; Your own functions. How to calculate of two numbers?
 
 
+;; Anonymous functions.
+
+
 ;; Some useful sequence functions (count conj, first, second nth).
 ;; There are many more.
 
