@@ -8,24 +8,25 @@ Simple full-stack Clojure example project.
 
 ## Development
 
-Open terminal, go to the working directory and run
+Open terminal, go to the working directory and run:
 
 ```bash
 lein develop
 ```
 
-Then open your IDE, and start the repl from there. Use ```(reset)```
-to start the server, and reset it when you make changes.
+Then open your IDE, and start a new repl from there. Use ```(reset)```
+to start the server, and reset it when you make changes to the backend.
+The frontend will update automatically when files are saved.
 
 ## Deployment
 
-Open terminal, go to the working directory and run
+Open terminal, go to the working directory and run:
 
 ```bash
 lein production
 ```
 
-This will produce and uberjar, which you run with command
+This will produce an uberjar, which you run with command:
 
 ```bash
 java -jar target/uberjar/tiko-example-0.1.0-SNAPSHOT-standalone.jar
