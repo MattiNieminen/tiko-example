@@ -14,21 +14,21 @@
   (re-frame/dispatch [id ev-msg]))
 
 (re-frame/reg-fx
- :sente-connection
+ :sente/connection
  (fn [_]
    (sente/connect! dispatch-sente-event-msg)))
 
 (re-frame/reg-fx
- :sente-event
+ :sente/event
  (fn [{:keys [event dispatch-to]}]
    (if dispatch-to
      (sente/send! event #(re-frame/dispatch (conj dispatch-to %1)))
      (sente/send! event))))
 
 (re-frame/reg-event-fx
- :connect-sente
+ :sente/connect
  (fn [_ _]
-   {:sente-connection true}))
+   {:sente/connection true}))
 
 (re-frame/reg-event-db
  :chsk/state
@@ -39,7 +39,7 @@
 (re-frame/reg-event-fx
  :chsk/handshake
  (fn [_ _]
-   {:dispatch [:fetch-todos]}))
+   {:dispatch [:todo/fetch-all]}))
 
 (re-frame/reg-event-fx
  :chsk/recv
@@ -57,30 +57,30 @@
 ;;
 
 (re-frame/reg-event-db
- :initialise-db
+ :db/initialize
  (fn [db _]
    (merge db/default-value db)))
 
 (re-frame/reg-event-fx
- :fetch-todos
+ :todo/fetch-all
  (fn [_ [_ message]]
-   {:sente-event {:event [:todo/fetch-all]
-                  :dispatch-to [:handle-todos-response]}}))
+   {:sente/event {:event [:todo/fetch-all]
+                  :dispatch-to [:todo/handle-response]}}))
 
 (re-frame/reg-event-db
- :handle-todos-response
+ :todo/handle-response
  (fn [db [_ {:keys [todos]}]]
    (assoc db :todos todos)))
 
 (re-frame/reg-event-db
- :update-new-todo
+ :todo/update-new
  (fn [db [_ {:keys [new-todo]}]]
    (assoc db :new-todo new-todo)))
 
 (re-frame/reg-event-fx
- :create-todo
+ :todo/create
  (fn [{:keys [db]} _]
-   {:sente-event {:event [:todo/create (select-keys db [:new-todo])]}
+   {:sente/event {:event [:todo/create (select-keys db [:new-todo])]}
     :db (dissoc db :new-todo)}))
 
 (re-frame/reg-event-db

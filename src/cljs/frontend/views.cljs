@@ -8,7 +8,7 @@
 
 (defn todo-list
   []
-  (let [todos (re-frame/subscribe [:todos])]
+  (let [todos (re-frame/subscribe [:todo/all])]
     (if-not (empty? @todos)
       [:div.todo-list
        (for [[idx todo] (map-indexed vector @todos)]
@@ -17,7 +17,7 @@
 
 (defn new-todo-input
   []
-  (let [new-todo (re-frame/subscribe [:new-todo])]
+  (let [new-todo (re-frame/subscribe [:todo/new])]
     [:div.new-todo
      [:input.new-todo__input
       {:placeholder (tr :new-todo)
@@ -25,11 +25,10 @@
        :value @new-todo
        :on-change (fn [e]
                     (let [value (-> e .-target .-value)]
-                      (re-frame/dispatch [:update-new-todo
-                                          {:new-todo value}])))
+                      (re-frame/dispatch [:todo/update-new {:new-todo value}])))
        :on-key-press (fn [e]
                        (if (= 13 (.-charCode e))
-                         (re-frame/dispatch [:create-todo])))}]]))
+                         (re-frame/dispatch [:todo/create])))}]]))
 
 (defn main-view
   []

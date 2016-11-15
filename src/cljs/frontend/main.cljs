@@ -7,8 +7,8 @@
 
 (defn ^:export main
   []
-  (re-frame/dispatch-sync [:initialise-db])
-  (re-frame/dispatch-sync [:connect-sente])
+  (re-frame/dispatch-sync [:db/initialize])
+  (re-frame/dispatch-sync [:sente/connect])
   (reagent/render [views/main-view]
                   (.getElementById js/document "app")))
 
